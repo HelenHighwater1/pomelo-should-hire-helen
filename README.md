@@ -129,4 +129,4 @@ The distance between this demo and something safe enough to put in front of a pr
 
 I'm Helen Highwater, a junior software engineer with a non-traditional background looking for the right place to grow. This felt like meaningful work worth getting good at.
 
-[heyimhelen.com](https://heyimhelen.com) · [LinkedIn](https://www.linkedin.com/in/helen-highwater-96981532/) 
+[heyimhelen.com](https://heyimhelen.com) - [LinkedIn](https://www.linkedin.com/in/helen-highwater-96981532/) 
