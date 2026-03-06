@@ -1,9 +1,9 @@
- Care Desert Map
+# Care Desert Map
 
 An interactive map exploring maternal care access across the United States, county by county. Built as a demo project for my application to Pomelo Care.
 
 Live demo: [your-demo-url.vercel.app](#)
-
+![Care Desert Map](screenshots/care-desert-map.png)
 ---
 
 ## Why I built this

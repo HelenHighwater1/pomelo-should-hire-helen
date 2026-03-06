@@ -59,3 +59,39 @@ export const COUNTY_FOCUS_ZOOM = 8;
 
 /** Duration of zoom animation in milliseconds */
 export const ZOOM_ANIMATION_DURATION_MS = 1500;
+
+/** Layout: header height (matches h-14 / 3.5rem) */
+export const HEADER_HEIGHT = "3.5rem";
+
+/** Layout: bottom margin above footer */
+export const FOOTER_MARGIN = "2rem";
+
+/** County outline line width (Mapbox paint) */
+export const COUNTY_OUTLINE_WIDTH = 0.5;
+
+/** County outline color (Mapbox paint) */
+export const COUNTY_OUTLINE_COLOR = "#ffffff";
+
+/** Highlight outline line width when county selected */
+export const HIGHLIGHT_OUTLINE_WIDTH = 3;
+
+/** Resize debounce delays in ms (Mapbox layout settling) */
+export const RESIZE_DEBOUNCE_DELAYS_MS = [100, 500, 1500] as const;
+
+/** Map style load timeout in milliseconds */
+export const MAP_LOAD_TIMEOUT_MS = 15000;
+
+/** Minimum container dimension (px) before initializing map */
+export const MIN_CONTAINER_SIZE_PX = 100;
+
+/** Duration of fitBounds animation in milliseconds */
+export const BOUNDS_ANIMATION_DURATION_MS = 800;
+
+/** AI chat: max tokens per response */
+export const AI_MAX_TOKENS = 1024;
+
+/** AI chat: model identifier */
+export const AI_MODEL = "claude-haiku-4-5-20251001";
+
+/** ZIP code input max length (5 digits or 9 with hyphen) */
+export const ZIP_CODE_MAX_LENGTH = 10;

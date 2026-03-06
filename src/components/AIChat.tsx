@@ -14,7 +14,6 @@ export default function AIChat({ county }: AIChatProps) {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   const scrollToBottom = useCallback(() => {
     const el = scrollContainerRef.current;
@@ -153,7 +152,6 @@ export default function AIChat({ county }: AIChatProps) {
       <form onSubmit={handleSubmit} className="mt-2 shrink-0">
         <div className="flex gap-2">
           <textarea
-            ref={inputRef}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {

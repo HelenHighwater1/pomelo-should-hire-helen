@@ -7,7 +7,12 @@ import Map from "@/components/Map";
 import MapLegend from "@/components/MapLegend";
 import CountyPanel from "@/components/CountyPanel";
 import type { CountyStats } from "@/data/types";
-import { MAP_WIDTH_PERCENT, PANEL_WIDTH_PERCENT } from "@/data/constants";
+import {
+  MAP_WIDTH_PERCENT,
+  PANEL_WIDTH_PERCENT,
+  HEADER_HEIGHT,
+  FOOTER_MARGIN,
+} from "@/data/constants";
 
 export default function Home() {
   const [selectedCounty, setSelectedCounty] = useState<CountyStats | null>(null);
@@ -22,11 +27,11 @@ export default function Home() {
     <>
       <Header />
       <div
-        className="fixed left-0 top-14 z-0"
+        className="fixed left-0 z-0"
         style={{
           width: `${MAP_WIDTH_PERCENT}%`,
-          top: "3.5rem",
-          bottom: "2rem",
+          top: HEADER_HEIGHT,
+          bottom: FOOTER_MARGIN,
         }}
       >
         <div className="relative h-full w-full">
@@ -38,10 +43,11 @@ export default function Home() {
         </div>
       </div>
       <div
-        className="fixed right-0 top-14 z-10 flex flex-col overflow-y-auto border-l border-sand-200 bg-cream-50 p-4"
+        className="fixed right-0 z-10 flex flex-col overflow-y-auto border-l border-sand-200 bg-cream-50 p-4"
         style={{
           width: `${PANEL_WIDTH_PERCENT}%`,
-          bottom: "2rem",
+          top: HEADER_HEIGHT,
+          bottom: FOOTER_MARGIN,
         }}
       >
         <CountyPanel county={selectedCounty} />

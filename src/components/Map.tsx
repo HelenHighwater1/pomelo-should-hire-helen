@@ -8,9 +8,16 @@ import {
   ACCESS_LEVEL_COLORS,
   CHOROPLETH_FILL_OPACITY,
   COUNTY_FOCUS_ZOOM,
+  COUNTY_OUTLINE_COLOR,
+  COUNTY_OUTLINE_WIDTH,
   HIGHLIGHT_OUTLINE_COLOR,
+  HIGHLIGHT_OUTLINE_WIDTH,
   INITIAL_MAP_CENTER,
   INITIAL_ZOOM,
+  MAP_LOAD_TIMEOUT_MS,
+  MIN_CONTAINER_SIZE_PX,
+  RESIZE_DEBOUNCE_DELAYS_MS,
+  BOUNDS_ANIMATION_DURATION_MS,
   ZOOM_ANIMATION_DURATION_MS,
 } from "@/data/constants";
 import { buildCountyStats, getAccessLevelForFips } from "@/data/countyAccessData";
@@ -129,9 +136,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
     const resizeMap = () => map.resize();
     resizeMapRef.current = resizeMap;
     resizeMap();
-    const t1 = setTimeout(resizeMap, 100);
-    const t2 = setTimeout(resizeMap, 500);
-    const t3 = setTimeout(resizeMap, 1500);
+    const resizeTimeouts = RESIZE_DEBOUNCE_DELAYS_MS.map((d) => setTimeout(resizeMap, d));
     window.addEventListener("resize", resizeMap);
 
     const resizeObserver = new ResizeObserver(() => resizeMap());
@@ -143,7 +148,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
         map.resize();
         setIsLoading(false);
       }
-    }, 15000);
+    }, MAP_LOAD_TIMEOUT_MS);
 
     map.on("load", async () => {
       map.resize();
@@ -179,7 +184,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
           id: "counties-outline",
           type: "line",
           source: "counties",
-          paint: { "line-width": 0.5, "line-color": "#ffffff" },
+          paint: { "line-width": COUNTY_OUTLINE_WIDTH, "line-color": COUNTY_OUTLINE_COLOR },
         });
 
         map.addLayer({
@@ -187,7 +192,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
           type: "line",
           source: "counties",
           paint: {
-            "line-width": 3,
+            "line-width": HIGHLIGHT_OUTLINE_WIDTH,
             "line-color": HIGHLIGHT_OUTLINE_COLOR,
           },
           filter: ["==", ["get", "fips"], ""],
@@ -222,9 +227,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
       } catch (err) {
         console.error("Failed to load county GeoJSON:", err);
       } finally {
-        clearTimeout(t1);
-        clearTimeout(t2);
-        clearTimeout(t3);
+        resizeTimeouts.forEach(clearTimeout);
         clearTimeout(loadTimeout);
         // Keep ResizeObserver and resize listener active; cleanup on unmount only.
         if (map.loaded()) {
@@ -254,7 +257,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
     const initMap = () => {
       if (cancelled) return;
       const { clientHeight, clientWidth } = el;
-      if (clientHeight < 100 || clientWidth < 100) {
+      if (clientHeight < MIN_CONTAINER_SIZE_PX || clientWidth < MIN_CONTAINER_SIZE_PX) {
         requestAnimationFrame(initMap);
         return;
       }
@@ -312,7 +315,7 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
             [Math.min(...allLngs), Math.min(...allLats)],
             [Math.max(...allLngs), Math.max(...allLats)],
           ];
-          map.fitBounds(bounds, { duration: 800 });
+          map.fitBounds(bounds, { duration: BOUNDS_ANIMATION_DURATION_MS });
         }
       }
     }
@@ -321,12 +324,8 @@ export default function Map({ onCountySelect, selectedFips }: MapProps) {
   const showMapControls = !isLoading && !tokenMissing && !loadError;
 
   return (
-    <div className="absolute inset-0" style={{ width: "100%", height: "100%" }}>
-      <div
-        ref={containerRef}
-        className="absolute inset-0"
-        style={{ width: "100%", height: "100%" }}
-      />
+    <div className="absolute inset-0">
+      <div ref={containerRef} className="absolute inset-0" />
       {showMapControls && (
         <ZipCodeSearch onLocationFound={handleZipLocationFound} />
       )}

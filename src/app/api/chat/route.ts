@@ -1,7 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import type { CountyStats } from "@/data/types";
-import { ACCESS_LEVEL_LABELS } from "@/data/constants";
+import { ACCESS_LEVEL_LABELS, AI_MAX_TOKENS, AI_MODEL } from "@/data/constants";
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -60,8 +60,8 @@ export async function POST(req: Request) {
     }));
 
     const response = await anthropic.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 1024,
+      model: AI_MODEL,
+      max_tokens: AI_MAX_TOKENS,
       system: systemPrompt,
       messages: anthropicMessages,
     });

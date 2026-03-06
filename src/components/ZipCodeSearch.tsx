@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { geocodeZipCode } from "@/lib/geocoding";
+import { ZIP_CODE_MAX_LENGTH } from "@/data/constants";
 
 const ZIP_CODE_REGEX = /^\d{5}(-\d{4})?$/;
 
@@ -63,7 +64,7 @@ export default function ZipCodeSearch({
           onChange={(e) => setZip(e.target.value)}
           onFocus={() => setError(null)}
           placeholder="Enter ZIP code"
-          maxLength={10}
+          maxLength={ZIP_CODE_MAX_LENGTH}
           disabled={disabled || isSearching}
           className="w-28 rounded border border-sand-200 bg-white px-2 py-1.5 text-sm text-ink-800 placeholder:text-ink-300 focus:border-sage-500 focus:outline-none focus:ring-1 focus:ring-sage-500 disabled:opacity-60"
         />
