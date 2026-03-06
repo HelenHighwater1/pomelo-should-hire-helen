@@ -3,7 +3,7 @@
  */
 
 /** Maternal care access levels per HRSA/March of Dimes classification */
-export type AccessLevel = "desert" | "low" | "moderate" | "adequate";
+export type AccessLevel = "desert" | "low" | "moderate" | "adequate" | "unknown";
 
 /** County-level maternal care statistics and metadata */
 export interface CountyStats {
@@ -17,6 +17,8 @@ export interface CountyStats {
   birthingFacilities?: number;
   /** Obstetric clinicians count, if available */
   obstetricClinicians?: number;
+  /** True when county is not in AHRF; no stats available */
+  dataNotAvailable?: boolean;
 }
 
 /** Message in the AI chat */

@@ -11,6 +11,7 @@ export const ACCESS_LEVEL_LABELS: Record<AccessLevel, string> = {
   low: "Low Access",
   moderate: "Moderate Access",
   adequate: "Adequate Access",
+  unknown: "Data not available",
 };
 
 /** Map choropleth fill colors (warm, human palette) */
@@ -19,6 +20,7 @@ export const ACCESS_LEVEL_COLORS: Record<AccessLevel, string> = {
   low: "#e8a87c",
   moderate: "#a8d5a2",
   adequate: "#5c9e5c",
+  unknown: "#9ca3af",
 };
 
 /** Mapbox fill-opacity for choropleth */
@@ -29,11 +31,11 @@ export const HIGHLIGHT_OUTLINE_COLOR = "#2d5c7a";
 
 /** Short disclaimer shown inline (clickable to open full) */
 export const DATA_DISCLAIMER_SHORT =
-  "Demo data only. Data sourced from HRSA's 2023 Maternity Care Desert report.";
+  "Temporary data from HRSA Area Health Resources Files. I'm waiting on actual figures from March of Dimes.";
 
 /** Full disclaimer shown in popup */
 export const DATA_DISCLAIMER_FULL =
-  "This is for demo purposes only. This data sourced from HRSA's 2023 Maternity Care Desert report. Some urban counties may appear undercounted - HRSA's methodology attributes providers to their county of licensure, which doesn't always reflect where care is physically delivered. Figures should be interpreted as directional, not precise.";
+  "This is for demo purposes only. This map uses temporary data from HRSA's Area Health Resources Files (AHRF) to approximate maternal care access. I'm waiting on actual figures from March of Dimes. Some urban counties may appear undercounted—HRSA attributes providers to county of licensure, which doesn't always reflect where care is delivered. Figures should be interpreted as directional, not precise.";
 
 /** Suggested prompt chips shown before first user message */
 export const SUGGESTED_PROMPTS = [

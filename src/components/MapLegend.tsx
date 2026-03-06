@@ -3,7 +3,7 @@
 import { ACCESS_LEVEL_LABELS, ACCESS_LEVEL_COLORS } from "@/data/constants";
 import type { AccessLevel } from "@/data/types";
 
-const LEVELS: AccessLevel[] = ["desert", "low", "moderate", "adequate"];
+const LEVELS: AccessLevel[] = ["desert", "low", "moderate", "adequate", "unknown"];
 
 export default function MapLegend() {
   return (

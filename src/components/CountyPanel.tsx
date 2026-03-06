@@ -46,6 +46,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
   }
 
   const color = ACCESS_LEVEL_COLORS[county.accessLevel];
+  const dataNotAvailable = county.dataNotAvailable === true;
 
   return (
     <div className="flex h-full flex-col gap-3">
@@ -61,35 +62,43 @@ export default function CountyPanel({ county }: CountyPanelProps) {
             {ACCESS_LEVEL_LABELS[county.accessLevel]}
           </span>
         </div>
-        <dl className="mt-2 space-y-1.5 text-sm">
-          {county.womenReproductiveAge != null && (
-            <div className="flex justify-between">
-              <dt className="text-ink-500">Women 15-44</dt>
-              <dd className="font-medium text-ink-800">
-                {county.womenReproductiveAge.toLocaleString()}
-              </dd>
-            </div>
-          )}
-          {county.birthingFacilities != null && (
-            <div className="flex justify-between">
-              <dt className="text-ink-500">Facilities</dt>
-              <dd className="font-medium text-ink-800">{county.birthingFacilities}</dd>
-            </div>
-          )}
-          {county.obstetricClinicians != null && (
-            <div className="flex justify-between">
-              <dt className="text-ink-500">OB clinicians</dt>
-              <dd className="font-medium text-ink-800">{county.obstetricClinicians}</dd>
-            </div>
-          )}
-        </dl>
-        <button
-          type="button"
-          onClick={() => setIsDisclaimerOpen(true)}
-          className="mt-2 w-full border-t border-sand-200 pt-2 text-left text-xs leading-relaxed text-ink-500 underline-offset-2 hover:underline hover:text-ink-700"
-        >
-          {DATA_DISCLAIMER_SHORT}
-        </button>
+        {dataNotAvailable ? (
+          <p className="mt-2 text-sm text-ink-600">
+            Data not available for this county. I&apos;m waiting on actual figures from March of Dimes.
+          </p>
+        ) : (
+          <>
+            <dl className="mt-2 space-y-1.5 text-sm">
+              {county.womenReproductiveAge != null && (
+                <div className="flex justify-between">
+                  <dt className="text-ink-500">Women 15-44</dt>
+                  <dd className="font-medium text-ink-800">
+                    {county.womenReproductiveAge.toLocaleString()}
+                  </dd>
+                </div>
+              )}
+              {county.birthingFacilities != null && (
+                <div className="flex justify-between">
+                  <dt className="text-ink-500">Facilities</dt>
+                  <dd className="font-medium text-ink-800">{county.birthingFacilities}</dd>
+                </div>
+              )}
+              {county.obstetricClinicians != null && (
+                <div className="flex justify-between">
+                  <dt className="text-ink-500">OB clinicians</dt>
+                  <dd className="font-medium text-ink-800">{county.obstetricClinicians}</dd>
+                </div>
+              )}
+            </dl>
+            <button
+              type="button"
+              onClick={() => setIsDisclaimerOpen(true)}
+              className="mt-2 w-full border-t border-sand-200 pt-2 text-left text-xs leading-relaxed text-ink-500 underline-offset-2 hover:underline hover:text-ink-700"
+            >
+              {DATA_DISCLAIMER_SHORT}
+            </button>
+          </>
+        )}
       </div>
 
       {isAiInfoOpen && (
@@ -113,7 +122,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
             <h3 className="mt-4 font-serif text-sm font-semibold text-ink-800">What it&apos;s designed to do</h3>
             <ul className="mt-1.5 list-disc space-y-1 pl-4 text-sm leading-relaxed text-ink-600">
               <li>Answer questions about county-level maternal care access, resources, and context</li>
-              <li>Supplement HRSA data with general knowledge about state programs, nearby facilities, and regional context</li>
+              <li>Supplement HRSA AHRF data with general knowledge about state programs, nearby facilities, and regional context (temporary AHRF data; awaiting March of Dimes figures)</li>
               <li>Direct users to appropriate resources like local health departments, 211.org, and state Medicaid programs</li>
             </ul>
             <h3 className="mt-4 font-serif text-sm font-semibold text-ink-800">Guardrails in place</h3>
@@ -132,7 +141,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
               <li>Ongoing monitoring and human review of conversation logs for safety</li>
             </ul>
             <p className="mt-4 border-t border-sand-200 pt-3 text-xs leading-relaxed text-ink-600">
-              Data sourced from HRSA&apos;s 2023 Maternity Care Desert report. AI responses are for informational purposes only and should not be used to make medical decisions.
+              Temporary data from HRSA Area Health Resources Files. I&apos;m waiting on actual figures from March of Dimes. AI responses are for informational purposes only and should not be used to make medical decisions.
             </p>
             <button
               type="button"
@@ -174,6 +183,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
         </div>
       )}
 
+      {!dataNotAvailable && (
       <div className="flex flex-1 min-h-0 flex-col overflow-hidden rounded-lg border border-sand-200 bg-cream-50 p-4">
         <div className="mb-2 flex shrink-0 items-baseline gap-2">
           <h3 className="font-serif text-sm font-semibold text-peach-600">AI insights</h3>
@@ -186,9 +196,10 @@ export default function CountyPanel({ county }: CountyPanelProps) {
           </button>
         </div>
         <div className="min-h-0 flex-1 overflow-hidden">
-          <AIChat county={county} />
+            <AIChat county={county} />
         </div>
       </div>
+      )}
     </div>
   );
 }

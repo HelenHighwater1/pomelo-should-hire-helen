@@ -96,6 +96,14 @@ export default function AIChat({ county }: AIChatProps) {
     );
   }
 
+  if (county.dataNotAvailable) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center rounded-lg bg-cream-50 p-6 text-center">
+        <p className="text-ink-500">Data not available for this county. The chat is disabled. I&apos;m waiting on actual figures from March of Dimes.</p>
+      </div>
+    );
+  }
+
   const showChips = messages.length === 0;
 
   return (

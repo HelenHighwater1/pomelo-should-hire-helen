@@ -52,6 +52,13 @@ export async function POST(req: Request) {
       );
     }
 
+    if (county.dataNotAvailable) {
+      return NextResponse.json(
+        { error: "Data not available for this county. I'm waiting on actual figures from March of Dimes." },
+        { status: 400 }
+      );
+    }
+
     const systemPrompt = buildSystemPrompt(county);
 
     const anthropicMessages = messages.map((m: { role: string; content: string }) => ({

@@ -42,7 +42,7 @@ export default function MapInfoModal({ isOpen, onClose }: MapInfoModalProps) {
         <p className="mt-2 text-xs text-ink-400">For demo purposes only.</p>
         <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-600">
           <p>
-            This map shows maternal care access across every US county, using data from HRSA&apos;s 2023 Maternity Care Desert report. Counties are classified as a care desert, low access, moderate access, or adequate access based on the number of OB clinicians and birthing facilities relative to population.
+            This map shows maternal care access across every US county using temporary data from HRSA&apos;s Area Health Resources Files (AHRF). I&apos;m waiting on actual figures from March of Dimes. Counties are classified as a care desert, low access, moderate access, or adequate access based on the number of OB clinicians and birthing facilities relative to population.
           </p>
           <p>
             Click any county to see its stats and ask questions about maternal care in that area.
