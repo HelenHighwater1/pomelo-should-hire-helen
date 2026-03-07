@@ -42,7 +42,10 @@ export default function MapInfoModal({ isOpen, onClose }: MapInfoModalProps) {
         <p className="mt-2 text-xs text-ink-400">For demo purposes only.</p>
         <div className="mt-3 space-y-3 text-sm leading-relaxed text-ink-600">
           <p>
-            This map shows maternal care access across every US county using temporary data from HRSA&apos;s Area Health Resources Files (AHRF). I&apos;m waiting on actual figures from March of Dimes. Counties are classified as a care desert, low access, moderate access, or adequate access based on the number of OB clinicians and birthing facilities relative to population.
+            This map shows maternal care access - the amount of care available in any given county across the US.
+          </p>
+          <p>
+            The data used here is not entirely correct - this was made for demo purposes, and the only data source readily available was from HRSA&apos;s Area Health Resource Files. I did extract the relevant data with serious limitations: it&apos;s not population-adjusted and excludes several provider types. This was the best immediately available option, however I&apos;ve requested the March of Dimes county-level dataset (a much better resource) and expect it within the week, at which point this will be replaced.
           </p>
           <p>
             Click any county to see its stats and ask questions about maternal care in that area.

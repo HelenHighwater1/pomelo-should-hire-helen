@@ -31,11 +31,11 @@ export const HIGHLIGHT_OUTLINE_COLOR = "#2d5c7a";
 
 /** Short disclaimer shown inline (clickable to open full) */
 export const DATA_DISCLAIMER_SHORT =
-  "Temporary data from HRSA Area Health Resources Files. I'm waiting on actual figures from March of Dimes.";
+  "Demo data extracted from HRSA's Area Health Resource Files - Click to see limitations";
 
 /** Full disclaimer shown in popup */
 export const DATA_DISCLAIMER_FULL =
-  "This is for demo purposes only. This map uses temporary data from HRSA's Area Health Resources Files (AHRF) to approximate maternal care access. I'm waiting on actual figures from March of Dimes. Some urban counties may appear undercounted—HRSA attributes providers to county of licensure, which doesn't always reflect where care is delivered. Figures should be interpreted as directional, not precise.";
+  "This is for demo purposes only. This map uses data extracted from HRSA's Area Health Resources Files (AHRF) CSV files. Limitations include: not population-adjusted, missing some provider types (e.g., family physicians who deliver, certified professional midwives), and other edge cases. I've requested data from March of Dimes, which uses a more rigorous methodology - this is a temporary placeholder. Figures should be interpreted as directional, not precise.";
 
 /** Suggested prompt chips shown before first user message */
 export const SUGGESTED_PROMPTS = [

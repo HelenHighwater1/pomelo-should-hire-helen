@@ -54,7 +54,7 @@ export async function POST(req: Request) {
 
     if (county.dataNotAvailable) {
       return NextResponse.json(
-        { error: "Data not available for this county. I'm waiting on actual figures from March of Dimes." },
+        { error: "Data not available for this county. I've requested March of Dimes data - this is a temporary placeholder." },
         { status: 400 }
       );
     }

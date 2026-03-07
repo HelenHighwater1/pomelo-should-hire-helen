@@ -1,6 +1,6 @@
 /**
  * County-level maternal care access data.
- * Uses HRSA AHRF data (temporary; awaiting March of Dimes figures).
+ * Uses data extracted from HRSA's AHRF CSV files. Limitations: not population-adjusted, missing some provider types. Temporary placeholder - March of Dimes data requested.
  */
 
 import type { AccessLevel } from "./types";

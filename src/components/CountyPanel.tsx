@@ -64,7 +64,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
         </div>
         {dataNotAvailable ? (
           <p className="mt-2 text-sm text-ink-600">
-            Data not available for this county. I&apos;m waiting on actual figures from March of Dimes.
+            Data not available for this county. I&apos;ve requested March of Dimes data - this is a temporary placeholder.
           </p>
         ) : (
           <>
@@ -122,7 +122,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
             <h3 className="mt-4 font-serif text-sm font-semibold text-ink-800">What it&apos;s designed to do</h3>
             <ul className="mt-1.5 list-disc space-y-1 pl-4 text-sm leading-relaxed text-ink-600">
               <li>Answer questions about county-level maternal care access, resources, and context</li>
-              <li>Supplement HRSA AHRF data with general knowledge about state programs, nearby facilities, and regional context (temporary AHRF data; awaiting March of Dimes figures)</li>
+              <li>Supplement data extracted from HRSA&apos;s AHRF CSV files (temporary placeholder; limitations: not population-adjusted, missing some provider types; March of Dimes data requested) with general knowledge about state programs, nearby facilities, and regional context</li>
               <li>Direct users to appropriate resources like local health departments, 211.org, and state Medicaid programs</li>
             </ul>
             <h3 className="mt-4 font-serif text-sm font-semibold text-ink-800">Guardrails in place</h3>
@@ -141,7 +141,7 @@ export default function CountyPanel({ county }: CountyPanelProps) {
               <li>Ongoing monitoring and human review of conversation logs for safety</li>
             </ul>
             <p className="mt-4 border-t border-sand-200 pt-3 text-xs leading-relaxed text-ink-600">
-              Temporary data from HRSA Area Health Resources Files. I&apos;m waiting on actual figures from March of Dimes. AI responses are for informational purposes only and should not be used to make medical decisions.
+              Data extracted from HRSA&apos;s CSV files. Limitations apply; March of Dimes data requested as a better source. AI responses are for informational purposes only and should not be used to make medical decisions.
             </p>
             <button
               type="button"

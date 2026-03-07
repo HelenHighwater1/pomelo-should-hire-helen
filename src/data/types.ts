@@ -2,7 +2,7 @@
  * Type definitions for Care Desert Map data and UI state.
  */
 
-/** Maternal care access levels per HRSA/March of Dimes classification */
+/** Maternal care access levels (extracted from HRSA AHRF CSV; temporary placeholder) */
 export type AccessLevel = "desert" | "low" | "moderate" | "adequate" | "unknown";
 
 /** County-level maternal care statistics and metadata */
